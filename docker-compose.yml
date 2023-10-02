@@ -1,0 +1,32 @@
+version: '3'
+services:
+  app:
+    container_name: ausweis
+    build:
+      context: ./backend
+      # dockerfile: .
+    pull_policy: build
+    ports:
+      - 127.0.0.1:8099:8099
+    image: ausweis:latest
+    working_dir: /django_project
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      URL_SUBPATH: ${URL_SUBPATH:-}
+      DEBUG: ${DEBUG:-0}
+    volumes:
+      - volume-ausweis:/django_project/data
+      - /srv/http/de-owba-mitglied/data:/django_project/data/export:rw
+      - /srv/http/de-owba-mitglied/app_static:/django_project/data/static:rw
+    restart: unless-stopped
+    networks:
+      - network-ausweis
+
+volumes:
+  volume-ausweis:
+    name: ausweis
+
+networks:
+  network-ausweis:
+    name: ausweis

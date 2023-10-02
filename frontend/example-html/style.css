@@ -1,0 +1,125 @@
+:root {
+  --w: 85.6mm;
+  --h: 54mm;
+  --r: 3.18mm;
+  --iw: 2.5cm;
+  --ih: 3.2cm;
+  --ratio: 2.5 / 3.2;
+}
+
+body {
+  background: #666;
+  font-family: sans-serif;
+}
+
+#msg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
+}
+
+#card {
+  position: absolute;
+  background: #fff;
+  width: var(--w);
+  height: var(--h);
+  top: calc(50% - var(--h)/2);
+  left: calc(50% - var(--w)/2);
+  border-radius: var(--r);
+  box-shadow: 0 0 4px;
+}
+
+#pass {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: var(--r);
+  font-size: 3mm;
+}
+
+header {
+  padding: 1mm;
+  border-radius: var(--r) var(--r) 0 0;
+  max-height: 6mm;
+}
+
+footer {
+  padding: 1mm 3mm;
+  border-radius: 0 0 var(--r) var(--r);
+}
+
+main {
+  display: flex;
+  font-size: 1.2em;
+}
+
+main>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2mm;
+  text-shadow: 1px 0 #fff, 0 1px #fff, -1px 0 #fff, 0 -1px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+}
+main>div>div {
+  display: flex;
+  gap: 1mm;
+}
+
+#img {
+  max-width: var(--iw);
+  max-height: var(--ih);
+  object-fit: cover;
+  border-radius: 1mm;
+  margin: 0 2mm;
+  aspect-ratio: var(--ratio);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.spin {
+  position: absolute;
+  bottom: 1.2mm;
+  right: 1.5mm;
+  width: 2mm;
+  height: 2mm;
+  border: .5mm solid transparent;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  animation: spin 2s steps(5) infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media print {
+  body {
+    background: unset;
+  }
+  #card {
+    top: unset;
+    left: unset;
+    scale: 1 !important;
+  }
+}
+
+/* Customize appearance */
+
+#pass {
+  background: url('img/bg.png') 25mm 6mm/60mm no-repeat;
+}
+footer {
+  color: #fff;
+  background: #0E9A48;
+}

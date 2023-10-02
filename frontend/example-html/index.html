@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
+	<title>Member card</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+	<link rel="manifest" href="./manifest.json">
+</head>
+<body>
+	<div id="card">
+		<div id="msg" data-load="Loading ...">Loading ...</div>
+		<div id="pass" class="hidden">
+			<div class="spin"></div>
+			<header>
+				<img src="img/header.svg" height="16" style="margin: 4px">
+				<img src="img/logo.svg" height="60" style="float: right">
+			</header>
+			<main>
+				<img id="img" src="img/no-img.svg">
+				<div>
+					<div><span id="name">Name</span></div>
+					<div>ID: <span id="member_id">42</span></div>
+					<div>Valid: <span id="valid">on 1/1/1970</span></div>
+				</div>
+			</main>
+			<footer>
+				Member card valid <span id="valid">on 1/1/1970</span>
+			</footer>
+		</div>
+	</div>
+	<script>onResize()</script>
+</body>
+</html>
