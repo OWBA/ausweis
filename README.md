@@ -4,6 +4,8 @@ A Django app for digital membership cards.
 
 ![example member card](docs/card.png)
 
+[try out the frontend](https://owba.github.io/ausweis/frontend/example-html/#org/d9498400-2640-442e-a092-6b4537a9b74d/rpsLvt6armrp)
+
 
 ## Features
 
