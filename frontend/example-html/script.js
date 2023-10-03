@@ -93,9 +93,13 @@ window.addEventListener('hashchange', onLoad, true);
 
 function onResize() {
 	const card = document.getElementById('card');
-	const sw = window.innerWidth / card.offsetWidth;
-	const sh = window.innerHeight / card.offsetHeight;
-	card.style.scale = Math.min(Math.min(sw, sh) * 0.97, 2);
+	const [cW, cH] = [card.offsetWidth, card.offsetHeight];
+	const [wW, wH] = [window.innerWidth, window.innerHeight];
+	const sL = Math.min(2, Math.min(wW / cW, wH / cH) * 0.97);
+	const sP = Math.min(2, Math.min(wW / cH, wH / cW) * 0.97);
+	const portrait = sP > sL && sL < 1.8;
+	card.style.scale = portrait ? sP : sL;
+	card.style.transform = portrait ? 'rotate(90deg)' : null;
 }
 
 window.addEventListener('resize', onResize, true);
